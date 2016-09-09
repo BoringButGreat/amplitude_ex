@@ -20,6 +20,11 @@ use Mix.Config
 #
 #     config :logger, level: :info
 #
+if Mix.env == :test do
+  config :amplitude, api_host: "test"
+else
+  config :amplitude, api_host: "https://api.amplitude.com/httpapi"
+end
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
