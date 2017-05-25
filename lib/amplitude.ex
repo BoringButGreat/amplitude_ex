@@ -1,7 +1,7 @@
 defmodule Amplitude do
   use Amplitude.API
 
-  @docmodule """
+  @moduledoc """
   Tools for getting data from the Worldping API
 
   Each Worldping API query accesses a different URL, not just different query

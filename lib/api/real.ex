@@ -6,7 +6,7 @@ defmodule Amplitude.API.Real do
   defp json_header, do: ["Content-Type": "application/json"]
 
   def api_track(params) do
-    case get(api_host, [], params: [api_key: api_key, event: Poison.encode!(params)]) do
+    case get(api_host(), [], params: [api_key: api_key(), event: Poison.encode!(params)]) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, body}
       {:ok, %HTTPoison.Response{status_code: 404, body: body}} ->
@@ -20,5 +20,5 @@ defmodule Amplitude.API.Real do
   def verify_json({:ok, json}), do: json
   def verify_json({_, response}), do: "#{inspect(response)}"
 
-  defp process_request_headers(headers), do: headers++json_header
+  defp process_request_headers(headers), do: headers++json_header()
 end
