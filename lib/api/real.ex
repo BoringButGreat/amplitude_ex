@@ -20,5 +20,5 @@ defmodule Amplitude.API.Real do
   def verify_json({:ok, json}), do: json
   def verify_json({_, response}), do: "#{inspect(response)}"
 
-  defp process_request_headers(headers), do: headers++json_header()
+  def process_request_headers(headers), do: headers++json_header()
 end
